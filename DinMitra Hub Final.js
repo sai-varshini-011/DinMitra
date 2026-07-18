@@ -1,7 +1,3 @@
-// =================================================================
-// 1. DATA TRANSACTIONS & VARIABLES SETUP
-// =================================================================
-// No API key needed anymore — Puter.js gives free AI access directly.
 
 var affirmationQuotes = [
     '"Your worth is not defined by a single exam score. You are growing, learning, and capable of incredible things."',
@@ -39,9 +35,7 @@ function toggleChat() {
     }
 }
 
-// =================================================================
-// 2. SECURE AI CONNECTION CONTROLLERS
-// =================================================================
+
 async function callAI(studentText) {
     var lowerText = studentText.toLowerCase();
 
@@ -105,9 +99,7 @@ async function sendMood(moodValue) {
     appendMessage(aiReply, "ai-message");
 }
 
-// =================================================================
-// 3. CLEAN EVENTS WIRE-UP ON MOUNT
-// =================================================================
+
 document.addEventListener("DOMContentLoaded", function() {
     // 1. Navigation Text Trigger
     var navTalkAI = document.getElementById("navTalkAI");
