@@ -1,3 +1,8 @@
+// =================================================================
+// 1. DATA TRANSACTIONS & VARIABLES SETUP
+// =================================================================
+var apiKey = "AQ.Ab8RN6IPbSMHkFpq-hrU4nnlHtuwz2_9vTGMdjk-B9-toYDHNw";
+var apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
 
 var affirmationQuotes = [
     '"Your worth is not defined by a single exam score. You are growing, learning, and capable of incredible things."',
@@ -35,7 +40,9 @@ function toggleChat() {
     }
 }
 
-
+// =================================================================
+// 2. SECURE AI CONNECTION CONTROLLERS
+// =================================================================
 async function callAI(studentText) {
     var lowerText = studentText.toLowerCase();
 
@@ -45,14 +52,23 @@ async function callAI(studentText) {
 
     var baseInstructions = "You are DinMitra, a deeply empathetic, warm, and protective friend to Indian students preparing for competitive exams. Speak like a supportive peer who wants to give them a comforting hug. Start your responses informally like 'Hey buddy', 'Hello friend', or 'Hey there'. Keep your response very brief, conversational, and limited to 2 or 3 sentences max.";
     try {
-        var response = await puter.ai.chat(baseInstructions + "\n\nStudent: " + studentText);
+        var response = await fetch(apiUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "x-goog-api-key": apiKey
+            },
+            body: JSON.stringify({
+                contents: [{
+                    parts: [{
+                        text: baseInstructions + "\n\nStudent: " + studentText
+                    }]
+                }]
+            })
+        });
 
-        // Puter.js returns an object; the actual reply text lives in response.message.content
-        if (response && response.message && response.message.content) {
-            return response.message.content;
-        }
-        return String(response);
-
+        var data = await response.json();
+        return data.candidates[0].content.parts[0].text;
     } catch (error) {
         console.error("AI connection error:", error);
         return "I had a tiny hiccup connecting to the network. Take a deep breath and let's try that again.";
@@ -99,9 +115,10 @@ async function sendMood(moodValue) {
     appendMessage(aiReply, "ai-message");
 }
 
-
+// =================================================================
+// 3. CLEAN EVENTS WIRE-UP ON MOUNT
+// =================================================================
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. Navigation Text Trigger
     var navTalkAI = document.getElementById("navTalkAI");
     if (navTalkAI) {
         navTalkAI.addEventListener("click", function(e) {
@@ -110,31 +127,26 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // 2. Main Floating Button Trigger
     var chatToggleMain = document.getElementById("chatToggleMain");
     if (chatToggleMain) {
         chatToggleMain.addEventListener("click", toggleChat);
     }
 
-    // 3. Inside-Chat Close Button Trigger
     var chatCloseBtn = document.getElementById("chatCloseBtn");
     if (chatCloseBtn) {
         chatCloseBtn.addEventListener("click", toggleChat);
     }
 
-    // 4. Affirmation Box Click Tracker
     var hugCard = document.getElementById("hugAffirmationCard");
     if (hugCard) {
         hugCard.addEventListener("click", rotateAffirmation);
     }
 
-    // 5. Submit Message Click Trigger
     var sendMsgBtn = document.getElementById("sendMsgBtn");
     if (sendMsgBtn) {
         sendMsgBtn.addEventListener("click", sendMessage);
     }
 
-    // 6. Input Keyboard Enter Key Trigger
     var userInput = document.getElementById("userInput");
     if (userInput) {
         userInput.addEventListener("keydown", function(event) {
@@ -144,7 +156,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // 7. Automated Loop for Mood Grid Buttons
     var moodButtons = document.querySelectorAll(".btn-mood");
     moodButtons.forEach(function(button) {
         button.addEventListener("click", function() {
