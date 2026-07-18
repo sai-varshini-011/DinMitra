@@ -1,8 +1,8 @@
 // =================================================================
 // 1. DATA TRANSACTIONS & VARIABLES SETUP
 // =================================================================
-var apiKey = "AQ.Ab8RN6IPbSMHkFpq-hrU4nnlHtuwz2_9vTGMdjk-B9-toYDHNw";
-var apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
+var apiKey = "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";
+var apiUrl = "https://api.groq.com/openai/v1/chat/completions";
 
 var affirmationQuotes = [
     '"Your worth is not defined by a single exam score. You are growing, learning, and capable of incredible things."',
@@ -51,24 +51,26 @@ async function callAI(studentText) {
     }
 
     var baseInstructions = "You are DinMitra, a deeply empathetic, warm, and protective friend to Indian students preparing for competitive exams. Speak like a supportive peer who wants to give them a comforting hug. Start your responses informally like 'Hey buddy', 'Hello friend', or 'Hey there'. Keep your response very brief, conversational, and limited to 2 or 3 sentences max.";
+
     try {
         var response = await fetch(apiUrl, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "x-goog-api-key": apiKey
+                "Authorization": "Bearer " + apiKey
             },
             body: JSON.stringify({
-                contents: [{
-                    parts: [{
-                        text: baseInstructions + "\n\nStudent: " + studentText
-                    }]
-                }]
+                model: "llama-3.3-70b-versatile",
+                messages: [
+                    { role: "system", content: baseInstructions },
+                    { role: "user", content: studentText }
+                ]
             })
         });
 
         var data = await response.json();
-        return data.candidates[0].content.parts[0].text;
+        return data.choices[0].message.content;
+
     } catch (error) {
         console.error("AI connection error:", error);
         return "I had a tiny hiccup connecting to the network. Take a deep breath and let's try that again.";
