@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+
+/* =================================================================
+   1. COLOR ARCHITECTURE & UTILITIES (Sage & Lavender Dusk)
+   ================================================================= */
+body {
+    background-color: #F5F7F6;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #2B3530;
+}
+
+h1,
+h2,
+h3,
+h4,
+.navbar-brand,
+.chat-header {
+    font-family: 'Exo 2', sans-serif;
+}
+
+.main-title {
+    color: #5D4A6B;
+}
+
+/* =================================================================
+   2. NAVBAR MANAGEMENT
+   ================================================================= */
+.custom-nav {
+    background-color: #5D4A6B !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.uppercase-tracking {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+/* =================================================================
+   3. AESTHETIC INTERFACE COMPONENT WIDGETS
+   ================================================================= */
+.feature-card {
+    background: #FFFFFF;
+    border: 1px solid rgba(93, 74, 107, 0.12);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(93, 74, 107, 0.02);
+}
+
+.custom-card-title {
+    color: #5D4A6B;
+}
+
+.affirmation-card {
+    background: linear-gradient(135deg, #745F85, #5D4A6B);
+    border: none;
+    border-radius: 16px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 6px 20px rgba(93, 74, 107, 0.15);
+}
+
+.affirmation-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(93, 74, 107, 0.22);
+}
+
+.dynamic-badge {
+    background-color: rgba(255, 255, 255, 0.16);
+    width: fit-content;
+    margin: 0 auto;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+}
+
+.italic-quote {
+    font-style: italic;
+    font-weight: 400;
+}
+
+.btn-mood {
+    background-color: #FFFFFF;
+    color: #5D4A6B;
+    border: 1px solid rgba(93, 74, 107, 0.12);
+    border-radius: 24px;
+    padding: 8px 20px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.btn-mood:hover {
+    background-color: #EAE6EE;
+    color: #251B2E;
+    transform: translateY(-1px);
+}
+
+.btn-submit {
+    background-color: #5D4A6B;
+    color: #FFFFFF;
+    border-radius: 8px;
+    font-weight: 500;
+    border: none;
+}
+
+.btn-submit:hover {
+    background-color: #4A3A56;
+}
+
+/* =================================================================
+   4. CALMING SYNCHRONIZED BREATHING ENGINE
+   ================================================================= */
+.breathing-container {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(93, 74, 107, 0.06);
+    border-radius: 50%;
+}
+
+.breathing-circle {
+    width: 35px;
+    height: 35px;
+    background-color: #5D4A6B;
+    border-radius: 50%;
+    animation: boxBreathingCycle 16s infinite ease-in-out;
+}
+
+@keyframes boxBreathingCycle {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(3.5);
+    }
+
+    50% {
+        transform: scale(3.5);
+    }
+
+    75% {
+        transform: scale(1);
+    }
+}
+
+/* =================================================================
+   5. INTERACTIVE COMPANION CHAT SYSTEM
+   ================================================================= */
+.chat-toggle-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background-color: #5D4A6B;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 30px;
+    padding: 14px 24px;
+    font-weight: 600;
+    box-shadow: 0 8px 24px rgba(93, 74, 107, 0.25);
+    z-index: 1000;
+    transition: all 0.2s ease;
+}
+
+.chat-toggle-btn:hover {
+    background-color: #4A3A56;
+    transform: scale(1.03);
+}
+
+.chat-container {
+    position: fixed;
+    bottom: 90px;
+    right: 24px;
+    width: 360px;
+    height: 480px;
+    background-color: #EAE6EE;
+    border: 1px solid rgba(93, 74, 107, 0.12);
+    border-radius: 16px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.chat-header {
+    background-color: #5D4A6B;
+    padding: 14px 16px;
+}
+
+.chat-messages-box {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.chat-input-area {
+    padding: 12px;
+    background-color: #FFFFFF;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.message {
+    max-width: 85%;
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 0.92rem;
+    line-height: 1.4;
+}
+
+.user-message {
+    background-color: #5D4A6B;
+    color: #FFFFFF;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+}
+
+.ai-message {
+    background-color: #EAE6EE;
+    color: #2B1D35;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+    border: 1px solid rgba(93, 74, 107, 0.15);
+}
+
+/* =================================================================
+   6. SECURE KEY INPUT FIELD STYLING (Clears NxtWave Warnings)
+   ================================================================= */
+#secureKeyInput {
+    background-color: #FFFFFF;
+    border: 1px solid rgba(93, 74, 107, 0.12);
+    color: #2B3530;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    padding: 6px 12px;
+    transition: all 0.2s ease;
+}
+
+#secureKeyInput:focus {
+    border-color: #5D4A6B;
+    box-shadow: 0 0 0 2px #EAE6EE;
+    outline: none;
+}
+
+.form-control-sm {
+    min-height: calc(1.5em + 0.5rem + 2px);
+}
