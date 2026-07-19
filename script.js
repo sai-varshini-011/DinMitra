@@ -1,6 +1,4 @@
-// =================================================================
-// 1. DATA TRANSACTIONS & VARIABLES SETUP
-// =================================================================
+
 var apiKey = "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";
 var apiUrl = "https://api.groq.com/openai/v1/chat/completions";
 
@@ -40,9 +38,6 @@ function toggleChat() {
     }
 }
 
-// =================================================================
-// 2. SECURE AI CONNECTION CONTROLLERS
-// =================================================================
 async function callAI(studentText) {
     var lowerText = studentText.toLowerCase();
 
@@ -117,9 +112,7 @@ async function sendMood(moodValue) {
     appendMessage(aiReply, "ai-message");
 }
 
-// =================================================================
-// 3. CLEAN EVENTS WIRE-UP ON MOUNT
-// =================================================================
+
 document.addEventListener("DOMContentLoaded", function() {
     var navTalkAI = document.getElementById("navTalkAI");
     if (navTalkAI) {
