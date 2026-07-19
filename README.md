@@ -48,6 +48,8 @@ If you or someone you know is in distress, please reach out:
 
 Dinmitra is designed as a supportive first step — not a replacement for professional mental health care.
 
+Built solo for the online round of Idea2Impact 2026 by M SAI VARSHINI
+
 ---
 
 *Built solo for the online round of Idea2Impact 2026 by [Your Name].*
