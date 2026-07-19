@@ -22,7 +22,7 @@ Built for the **Idea2Impact Online Hackathon 2026** — Theme 3: Crisis Manageme
 - **HTML, CSS, JavaScript** — no frameworks, no backend server
 - **[Groq API](https://console.groq.com/)** (Llama 3.3 70B) — powers the AI conversation, called directly from the browser
 - **Bootstrap 5** — layout and UI components
-- Deployed as a static site on **Vercel**
+- Deployed as a responsive static site on **Vercel**
 
 ## Why this approach
 
